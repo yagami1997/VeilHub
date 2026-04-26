@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [],
+  "routes": [
+    {
+      "pattern": "/api/*",
+      "target": "worker",
+      "service": "veilhub-worker"
+    },
+    {
+      "pattern": "/*",
+      "target": "torrey"
+    }
+  ]
+} 

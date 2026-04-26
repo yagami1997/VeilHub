@@ -1,0 +1,22 @@
+name = "veilhub"
+main = "worker/sd.js"
+compatibility_date = "2026-04-25"
+
+kv_namespaces = [
+  { binding = "VEIL_LINKS", id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID" }
+]
+
+[vars]
+# Optional. Use this when generated links should use a fixed custom domain.
+# BASE_URL = "https://<YOUR_SHARE_DOMAIN>"
+APP_ENTRY_PATH = "<YOUR_PRIVATE_ENTRY_PATH>"
+PUBLIC_CREATE_ENABLED = "false"
+MAX_TTL_SECONDS = "2678400"
+
+# Optional custom domain. Keep this commented for the first deployment.
+# routes = [
+#   { pattern = "<YOUR_SHARE_DOMAIN>/*", zone_name = "<YOUR_ZONE>" }
+# ]
+
+[triggers]
+crons = []

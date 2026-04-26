@@ -1,0 +1,16 @@
+{
+  "name": "veilhub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/setup-deploy.mjs",
+    "deploy:one": "node scripts/setup-deploy.mjs",
+    "dev": "npx wrangler dev",
+    "deploy": "npx wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  },
+  "license": "GPL-3.0-only"
+}
