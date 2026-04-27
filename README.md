@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/License-GPL--3.0-e0b422?style=flat-square&labelColor=4b4f56" alt="GPL-3.0" />
 </p>
 
-<sub>Last updated: 2026-04-26 00:01 (PDT)</sub>
+<sub>Last updated: 2026-04-27 08:45 (PDT)</sub>
 
 </div>
 
@@ -319,13 +319,13 @@ Abuse or legal complaints about a specific third-party deployment must go to tha
 
 VeilHub starts from a small feeling: sharing a path should not always mean giving the whole destination away forever.
 
-The design follows that restraint. It does not try to become a platform, a growth loop, a dashboard full of analytics, or a promise it cannot keep. It is meant to be held in one person's hands: readable code, visible tradeoffs, a private workspace, expiring capabilities, and documentation that says where the protection ends.
+The design follows that restraint. It does not try to become a platform, a growth loop, a dashboard full of analytics, or a promise it cannot keep. It is meant to stay close to one person's hands: readable code, visible tradeoffs, a private workspace, expiring capabilities, and documentation that says where the protection ends.
 
-That is also the point of the interface. The colors, labels, layout, and controls are not sacred. They are a starting shape for an operator who wants the tool to feel like their own deployment rather than someone else's hosted product. Fork it, rename the small decisions, change the surface, but keep the boundary honest.
+That is also the point of the interface. The colors, labels, layout, and controls are not sacred. They are a first version of a room someone can move into, adjust, and recognize as their own. Fork it, rename the small decisions, change the surface, but keep the boundary honest.
 
-VeilHub is privacy-oriented, but it is not theatrical about privacy. It encrypts target URLs at rest, keeps creation behind an owner-controlled route, lets links expire, and separates access codes from URLs. It does not claim anonymity, erase traffic metadata, legalize unlawful sharing, or make the upstream author responsible for independent deployments.
+VeilHub is privacy-oriented, but it is not theatrical about privacy. It encrypts target URLs at rest, keeps creation behind an owner-controlled route, lets links expire, and separates access codes from URLs. Those choices are not a spell. They are a set of careful edges around a simple act: passing something along without leaving it exposed forever. It does not claim anonymity, erase traffic metadata, legalize unlawful sharing, or make the upstream author responsible for independent deployments.
 
-The philosophy is simple: make the useful thing small enough to understand, make the dangerous parts explicit, and leave enough room for the next operator to make it their own without pretending the responsibility disappeared.
+The philosophy is simple: make the useful thing small enough to understand, make the dangerous parts explicit, and leave enough room for the next operator to make it their own without pretending the responsibility disappeared. A link can feel temporary, intentional, and human-sized. That is the whole point.
 
 ## License
 
@@ -337,6 +337,6 @@ GPL-3.0 governs software licensing. It does not make any deployment legal, compl
 
 <div align="center">
 
-<sub>VeilHub 1.0.0 · Last updated: 2026-04-27 07:06 (PDT)</sub>
+<sub>VeilHub 1.0.0 · Last updated: 2026-04-27 08:45 (PDT)</sub>
 
 </div>
