@@ -20,11 +20,6 @@
 
 </div>
 
-<figure>
-  <img src="docs/assets/veilhub-reference-interface.svg" alt="VeilHub reference interface showing the private link generation workspace" />
-  <figcaption>The screenshot shows an experimental deployment. Colors, labels, layout, and file controls are yours to change — fork the repo and make it your own.</figcaption>
-</figure>
-
 ---
 
 ## Contents
@@ -56,6 +51,11 @@ It is not a public short-link marketing platform, not a file host, not a VPN, no
 - links can be one-time
 - links can require an access code
 - invalid public probes return controlled request-failed pages instead of exposing internal detail
+
+<figure>
+<img width="1514" height="1522" alt="image" src="https://github.com/user-attachments/assets/03bd9920-1e5e-4aaf-b2e6-f812e10da53d" />
+  <figcaption>The screenshot shows an experimental deployment. Colors, labels, layout, and file controls are yours to change — fork the repo and make it your own.</figcaption>
+</figure>
 
 ## Stack
 
