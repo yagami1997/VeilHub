@@ -317,11 +317,11 @@ Abuse or legal complaints about a specific third-party deployment must go to tha
 
 ## Notes
 
-VeilHub starts from a small feeling: sharing a path should not always mean giving the whole destination away forever.
+VeilHub begins with a quiet refusal: a path can be shared without letting the destination stand in the open forever.
 
-The design follows that restraint. It does not try to become a platform, a growth loop, a dashboard full of analytics, or a promise it cannot keep. It is meant to stay close to one person's hands: readable code, visible tradeoffs, a private workspace, expiring capabilities, and documentation that says where the protection ends.
+The design keeps that refusal modest. It does not dress itself as a platform, a funnel, an analytics wall, or a promise larger than its code. It is closer to a small locked drawer: readable parts, visible tradeoffs, a private workspace, expiring capabilities, and documentation that marks the edge of the spell.
 
-That is also the point of the interface. The colors, labels, layout, and controls are not sacred. They are a first version of a room someone can move into, adjust, and recognize as their own. Fork it, rename the small decisions, change the surface, but keep the boundary honest.
+The interface follows the same idea. The colors, labels, layout, and controls are not marble. They are wet paint on a first room: something an operator can repaint, rename, rearrange, and still keep honest about where the walls are.
 
 VeilHub is privacy-oriented, but it is not theatrical about privacy. It encrypts target URLs at rest, keeps creation behind an owner-controlled route, lets links expire, and separates access codes from URLs. Those choices are not a spell. They are a set of careful edges around a simple act: passing something along without leaving it exposed forever. It does not claim anonymity, erase traffic metadata, legalize unlawful sharing, or make the upstream author responsible for independent deployments.
 
