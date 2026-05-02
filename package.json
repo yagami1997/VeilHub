@@ -6,7 +6,6 @@
   "scripts": {
     "setup": "node scripts/setup-deploy.mjs",
     "deploy:one": "node scripts/setup-deploy.mjs",
-    "dev": "npx wrangler dev",
     "deploy": "npx wrangler deploy"
   },
   "devDependencies": {
