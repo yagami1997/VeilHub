@@ -1213,24 +1213,29 @@ export default {
     const safeStatus = Number(status) || 500;
     const safeClassification = escapeHtml(classification || 'Request Failed');
     const safeMessage = escapeHtml(message || 'The request could not be completed.');
+    const redirectUrl = 'https://www.cloudflare.com/';
 
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="5;url=${redirectUrl}">
   <title>Request failed</title>
   <style>
     :root {
-      --ink: #26232b;
-      --muted: #6b6470;
-      --line: rgba(65, 50, 75, .18);
+      --ink: #23301f;
+      --muted: #66715f;
+      --line: rgba(60, 86, 51, .16);
       --paper: #fbf7ef;
-      --panel: rgba(255, 255, 255, .62);
-      --wash: #f6efe6;
-      --purple: #463252;
-      --gold: #c8913a;
+      --panel: #F2E3CE;
+      --wash: rgba(255, 255, 255, .42);
+      --green: #3C5633;
+      --green-deep: #334b2d;
+      --gold: #D67A0B;
+      --cream: #fffaf0;
     }
+    * { box-sizing: border-box; }
     body {
       background: var(--paper);
       color: var(--ink);
@@ -1242,137 +1247,197 @@ export default {
     .page {
       align-items: center;
       display: flex;
+      justify-content: center;
       min-height: 100vh;
       padding: 48px 24px;
+      text-align: center;
     }
     .panel {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: 0 24px 60px rgba(38, 35, 43, .09);
-      margin: 0 auto;
-      max-width: 1120px;
+      box-shadow: 0 20px 48px rgba(42, 53, 35, .14);
+      max-width: 740px;
       overflow: hidden;
+      padding: 48px;
       width: 100%;
     }
-    .topbar, .footer {
+    .brand {
       align-items: center;
-      background: rgba(246, 239, 230, .72);
-      display: flex;
-      justify-content: space-between;
-      padding: 22px 28px;
+      color: var(--green);
+      display: inline-flex;
+      justify-content: center;
+      margin-bottom: 24px;
     }
-    .topbar {
-      border-bottom: 1px solid var(--line);
-    }
-    .footer {
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .topbar strong {
-      font-size: 18px;
-      font-weight: 650;
-      letter-spacing: -.01em;
-    }
-    .http {
-      color: var(--muted);
-      font-size: 18px;
-      font-weight: 520;
-    }
-    .content {
-      padding: 46px 44px 44px;
+    .brand span {
+      border: 1px solid rgba(60, 86, 51, .18);
+      border-radius: 999px;
+      background: rgba(255, 250, 240, .46);
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 820;
+      line-height: 1;
+      padding: 10px 18px 11px;
     }
     .eyebrow {
       color: var(--gold);
-      font-size: 18px;
-      font-weight: 760;
-      letter-spacing: .22em;
-      margin: 0 0 24px;
+      font-size: 14px;
+      font-weight: 780;
+      letter-spacing: .16em;
+      margin: 0 0 12px;
       text-transform: uppercase;
+    }
+    .status-code {
+      color: var(--green);
+      font-size: clamp(72px, 14vw, 118px);
+      font-weight: 780;
+      letter-spacing: 0;
+      line-height: .9;
+      margin: 0 0 16px;
     }
     h1 {
       color: var(--ink);
-      font-size: clamp(56px, 9vw, 92px);
-      font-weight: 690;
-      letter-spacing: -.055em;
-      line-height: .92;
-      margin: 0 0 30px;
+      font-size: clamp(30px, 5vw, 42px);
+      font-weight: 680;
+      letter-spacing: 0;
+      line-height: 1.08;
+      margin: 0 0 14px;
     }
     .copy {
       color: var(--muted);
-      font-size: 21px;
-      line-height: 1.45;
-      margin: 0;
-      max-width: 46ch;
+      font-size: 17px;
+      line-height: 1.55;
+      margin: 0 auto;
+      max-width: 42ch;
     }
-    .meta {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 42px;
-    }
-    .meta-card {
-      background: rgba(255, 255, 255, .5);
-      border: 1px solid var(--line);
+    .redirect-card {
+      background: var(--wash);
+      border: 1px solid rgba(60, 86, 51, .18);
       border-radius: 8px;
-      padding: 22px 24px;
+      margin-top: 34px;
+      padding: 26px 24px;
     }
-    .meta-label {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-      letter-spacing: .18em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
+    .spinner {
+      animation: spin .85s linear infinite;
+      border: 3px solid rgba(60, 86, 51, .18);
+      border-top-color: var(--green);
+      border-radius: 999px;
+      height: 42px;
+      margin: 0 auto 18px;
+      width: 42px;
     }
-    .meta-value {
+    .redirect-title {
       color: var(--ink);
-      font-size: 22px;
-      font-weight: 520;
+      font-size: 18px;
+      font-weight: 720;
+      margin: 0 0 8px;
     }
-    .footer b {
+    .redirect-copy {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      margin: 0 0 20px;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+    }
+    .button {
+      background: var(--green);
+      border-radius: 6px;
+      color: var(--cream);
+      display: inline-flex;
+      font-size: 15px;
+      font-weight: 720;
+      justify-content: center;
+      line-height: 1;
+      min-width: 118px;
+      padding: 14px 18px;
+      text-decoration: none;
+      transition: background .12s ease, transform .12s ease;
+    }
+    .button:hover {
+      background: var(--green-deep);
+      transform: translateY(-1px);
+    }
+    .footnote {
+      border-top: 1px solid rgba(60, 86, 51, .14);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin-top: 34px;
+      padding-top: 18px;
+    }
+    .footnote b {
       color: var(--gold);
       font-weight: 760;
     }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .spinner {
+        animation: none;
+      }
+      .button {
+        transition: none;
+      }
+      .button:hover {
+        transform: none;
+      }
+    }
     @media (max-width: 720px) {
-      .page { padding: 22px 14px; }
-      .topbar, .footer { padding: 18px; }
-      .content { padding: 34px 22px 28px; }
-      .meta { grid-template-columns: 1fr; margin-top: 30px; }
-      .footer { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .http { font-size: 16px; }
+      .page { padding: 24px 16px; }
+      .panel { padding: 34px 20px 24px; }
+      .brand { margin-bottom: 20px; }
+      .brand span { font-size: 18px; padding: 9px 16px 10px; }
+      .redirect-card { margin-top: 28px; padding: 22px 18px; }
+      .copy { font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <section class="panel">
-      <div class="topbar">
-        <strong>Request failed</strong>
-        <span class="http">HTTP ${safeStatus}</span>
+      <div class="brand" aria-label="VeilHub">
+        <span>VeilHub</span>
       </div>
-      <div class="content">
-        <p class="eyebrow">Error ${safeStatus}</p>
-        <h1>${safeClassification}</h1>
-        <p class="copy">${safeMessage}</p>
-        <div class="meta">
-          <div class="meta-card">
-            <div class="meta-label">Status</div>
-            <div class="meta-value">${safeStatus}</div>
-          </div>
-          <div class="meta-card">
-            <div class="meta-label">Classification</div>
-            <div class="meta-value">${safeClassification}</div>
-          </div>
+      <p class="eyebrow">Error ${safeStatus}</p>
+      <div class="status-code">${safeStatus}</div>
+      <h1>${safeClassification}</h1>
+      <p class="copy">${safeMessage}</p>
+
+      <div class="redirect-card" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="redirect-title">Redirecting to Cloudflare</p>
+        <p class="redirect-copy">Automatically redirecting in <b id="countdown">5</b> seconds.</p>
+        <div class="actions">
+          <a class="button" href="${redirectUrl}">Go now</a>
         </div>
       </div>
-      <div class="footer">
-        <span>Performance &amp; security by <b>Cloudflare</b></span>
-        <span>Reference ${safeStatus}</span>
+
+      <div class="footnote">
+        <span>Public errors are intentionally brief. Powered by <b>Cloudflare</b>.</span>
       </div>
     </section>
   </main>
+  <script>
+    (() => {
+      const redirectUrl = ${JSON.stringify(redirectUrl)};
+      const countdown = document.getElementById('countdown');
+      let seconds = 5;
+      const tick = () => {
+        seconds -= 1;
+        if (countdown) countdown.textContent = String(Math.max(seconds, 0));
+        if (seconds <= 0) {
+          window.location.assign(redirectUrl);
+          return;
+        }
+        window.setTimeout(tick, 1000);
+      };
+      window.setTimeout(tick, 1000);
+    })();
+  </script>
 </body>
 </html>`;
   }
