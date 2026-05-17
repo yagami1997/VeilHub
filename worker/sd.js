@@ -1213,7 +1213,7 @@ export default {
     const safeStatus = Number(status) || 500;
     const safeClassification = escapeHtml(classification || 'Request Failed');
     const safeMessage = escapeHtml(message || 'The request could not be completed.');
-    const redirectUrl = 'https://www.cloudflare.com/';
+    const redirectUrl = 'https://www.google.com/';
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -1409,7 +1409,7 @@ export default {
 
       <div class="redirect-card" role="status" aria-live="polite">
         <div class="spinner" aria-hidden="true"></div>
-        <p class="redirect-title">Redirecting to Cloudflare</p>
+        <p class="redirect-title">Redirecting...</p>
         <p class="redirect-copy">Automatically redirecting in <b id="countdown">5</b> seconds.</p>
         <div class="actions">
           <a class="button" href="${redirectUrl}">Go now</a>
@@ -1417,7 +1417,7 @@ export default {
       </div>
 
       <div class="footnote">
-        <span>Public errors are intentionally brief. Powered by <b>Cloudflare</b>.</span>
+        <span>Public errors are intentionally brief.</span>
       </div>
     </section>
   </main>
