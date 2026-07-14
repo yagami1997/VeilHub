@@ -1,12 +1,12 @@
 # Quickstart
 
-*Last updated: 2026-04-26 00:01 (PDT)*
+*Last updated: 2026-07-13 17:29 (PDT)*
 
 This guide gets a new VeilHub deployment running on Cloudflare Workers with one KV namespace and one private owner entry.
 
 ## Prerequisites
 
-- Node.js 18 or newer
+- Node.js 22 or newer
 - npm
 - Cloudflare account with Workers and KV enabled
 - Wrangler login available from this machine
